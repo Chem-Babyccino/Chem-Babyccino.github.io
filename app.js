@@ -520,13 +520,15 @@ function embeddedLearningFrame(question, kind, index, title) {
         ? `diagnostic/q${number}_d${index}.html`
         : `similar/q${number}_s${index}.html`;
   const src = `assets/113_ast_chem_embed/${file}`;
+  const embeddedHtml = window.EMBEDDED_LEARNING_HTML?.[file] || "";
+  const iframeSource = embeddedHtml ? `srcdoc="${escapeHtml(embeddedHtml)}"` : `src="${src}"`;
   return `
     <article class="embedded-card">
       <div class="embedded-card-header">
         <h3>${escapeHtml(title)}</h3>
         <a class="secondary-button small-button" href="${src}" target="_blank" rel="noopener">另開</a>
       </div>
-      <iframe class="learning-embed" title="第 ${question.number} 題 ${escapeHtml(title)}" src="${src}" loading="lazy"></iframe>
+      <iframe class="learning-embed" title="第 ${question.number} 題 ${escapeHtml(title)}" ${iframeSource} loading="lazy"></iframe>
     </article>
   `;
 }

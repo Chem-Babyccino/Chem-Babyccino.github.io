@@ -431,6 +431,54 @@ main {
   background: #fff;
 }
 
+.embedded-card {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.embedded-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.embedded-card-header h3,
+.embedded-card h3 {
+  margin: 0;
+}
+
+.small-button {
+  min-height: 0;
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+.learning-embed {
+  display: block;
+  width: 100%;
+  height: min(74vh, 720px);
+  min-height: 520px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.embedded-check-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+.embedded-stack {
+  display: grid;
+  gap: 14px;
+}
+
 .formula-box {
   display: grid;
   justify-items: start;
