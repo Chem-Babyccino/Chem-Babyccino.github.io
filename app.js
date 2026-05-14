@@ -469,7 +469,7 @@ function questionWorkspaceHtml(question) {
         <div class="answer-main">
           <div class="answer-box"><strong>解答</strong><p>${escapeHtml(answerText(question))}</p></div>
           <div class="concept-box"><strong>測驗到的核心概念內容</strong><ul>${question.concepts.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>
-          <div class="answer-box"><strong>計算式或判斷式</strong><p>${escapeHtml(question.calculation)}</p></div>
+          <div class="answer-box"><strong>計算式或判斷式</strong>${formulaHtml(question)}</div>
           <div class="answer-box"><strong>詳細解題步驟</strong><ol>${question.steps.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol></div>
         </div>
         <aside class="answer-side">
@@ -514,7 +514,7 @@ function diagnosticCardHtml(question, index, progress) {
 function transferCardHtml(question, progress) {
   return `
     <article class="check-card transfer-card">
-      <h3>原試題類題練習</h3>
+      <h3>類題練習</h3>
       <p>${escapeHtml(question.transfer.prompt)}</p>
       <div class="option-list" data-check="transfer">${optionButtons(question.transfer)}</div>
       <p class="feedback" data-feedback="transfer">${progress.transfer ? `已完成。詳解：${escapeHtml(question.transfer.explanation)}` : ""}</p>
@@ -603,13 +603,104 @@ function answerText(question) {
   return `官方選擇題參考答案為 ${question.officialAnswer}。建議先自己判斷，再用下方步驟核對每個條件。`;
 }
 
+function formulaHtml(question) {
+  const lines = equationLines(question);
+  return `
+    <div class="formula-box" aria-label="計算式或判斷式">
+      ${lines.map((line) => `<div class="formula-line">${line}</div>`).join("")}
+      <p class="formula-note">${escapeHtml(question.calculation)}</p>
+    </div>
+  `;
+}
+
+function fraction(numerator, denominator) {
+  return `<span class="fraction"><span>${numerator}</span><span>${denominator}</span></span>`;
+}
+
+function equationLines(question) {
+  const byTopic = {
+    atom: [
+      `<span>Z<sub>eff</sub> ↑</span><span class="arrow">→</span><span>原子半徑 ↓</span>`,
+      `<span>價電子受吸引力 ↑</span><span class="arrow">→</span><span>第一游離能 IE<sub>1</sub> ↑</span>`
+    ],
+    bonding: [
+      `<span>形式電荷</span><span>=</span><span>價電子數 - 孤電子數 - ${fraction("鍵結電子數", "2")}</span>`,
+      `<span>分子極性</span><span>由</span><span>鍵偶極向量和 Σμ 判斷</span>`,
+      `<span>Σμ = 0</span><span>→</span><span>非極性分子</span>`
+    ],
+    stoich: [
+      `<span>n</span><span>=</span><span>${fraction("m", "M")}</span>`,
+      `<span>PV</span><span>=</span><span>nRT</span>`,
+      `<span>${fraction("n<sub>A</sub>", "係數 A")}</span><span>=</span><span>${fraction("n<sub>B</sub>", "係數 B")}</span>`
+    ],
+    acid: [
+      `<span>pH</span><span>=</span><span>-log[H<sup>+</sup>]</span>`,
+      `<span>n(H<sup>+</sup>)</span><span>=</span><span>M<sub>酸</sub>V<sub>酸</sub></span>`,
+      `<span>n(OH<sup>-</sup>)</span><span>=</span><span>M<sub>鹼</sub>V<sub>鹼</sub></span>`,
+      `<span>[剩餘離子]</span><span>=</span><span>${fraction("剩餘 mol", "V<sub>總</sub>")}</span>`
+    ],
+    redox: [
+      `<span>氧化</span><span>:</span><span>失去 e<sup>-</sup>，氧化數上升</span>`,
+      `<span>還原</span><span>:</span><span>得到 e<sup>-</sup>，氧化數下降</span>`,
+      `<span>氧化半反應釋出 e<sup>-</sup></span><span>=</span><span>還原半反應消耗 e<sup>-</sup></span>`
+    ],
+    equilibrium: [
+      `<span>aA + bB</span><span>⇌</span><span>cC + dD</span>`,
+      `<span>K</span><span>=</span><span>${fraction("[C]<sup>c</sup>[D]<sup>d</sup>", "[A]<sup>a</sup>[B]<sup>b</sup>")}</span>`,
+      `<span>Q</span><span>=</span><span>${fraction("[C]<sup>c</sup>[D]<sup>d</sup>", "[A]<sup>a</sup>[B]<sup>b</sup>")}（代入當下濃度）</span>`,
+      `<span>Q &lt; K</span><span>→</span><span>向右移動；Q &gt; K → 向左移動</span>`
+    ],
+    thermo: [
+      `<span>ΔH</span><span>=</span><span>ΣnΔH<sub>f</sub>(生成物) - ΣnΔH<sub>f</sub>(反應物)</span>`,
+      `<span>ΔH &lt; 0</span><span>→</span><span>放熱反應</span>`,
+      `<span>ΔH &gt; 0</span><span>→</span><span>吸熱反應</span>`
+    ],
+    rate: [
+      `<span>平均速率</span><span>=</span><span>-${fraction("Δ[反應物]", "Δt")}</span>`,
+      `<span>平均速率</span><span>=</span><span>${fraction("Δ[生成物]", "Δt")}</span>`,
+      `<span>相對速率</span><span>∝</span><span>${fraction("1", "t")}</span>`
+    ],
+    gas: [
+      `<span>PV</span><span>=</span><span>nRT</span>`,
+      `<span>X<sub>i</sub></span><span>=</span><span>${fraction("n<sub>i</sub>", "n<sub>total</sub>")}</span>`,
+      `<span>P<sub>i</sub></span><span>=</span><span>X<sub>i</sub>P<sub>total</sub></span>`
+    ],
+    solution: [
+      `<span>M</span><span>=</span><span>${fraction("n", "V")}</span>`,
+      `<span>M<sub>1</sub>V<sub>1</sub></span><span>=</span><span>M<sub>2</sub>V<sub>2</sub></span>`,
+      `<span>M<sub>混合</sub></span><span>=</span><span>${fraction("M<sub>1</sub>V<sub>1</sub> + M<sub>2</sub>V<sub>2</sub>", "V<sub>總</sub>")}</span>`
+    ],
+    ksp: [
+      `<span>Ag<sub>2</sub>CrO<sub>4</sub>(s)</span><span>⇌</span><span>2Ag<sup>+</sup> + CrO<sub>4</sub><sup>2-</sup></span>`,
+      `<span>K<sub>sp</sub></span><span>=</span><span>[Ag<sup>+</sup>]<sup>2</sup>[CrO<sub>4</sub><sup>2-</sup>]</span>`,
+      `<span>Q<sub>sp</sub> &gt; K<sub>sp</sub></span><span>→</span><span>產生沉澱</span>`
+    ],
+    organic: [
+      `<span>官能基</span><span>→</span><span>反應位置</span>`,
+      `<span>醛基</span><span>:</span><span>R-CHO + Tollens 試劑 → 銀鏡</span>`,
+      `<span>酯水解</span><span>→</span><span>羧酸 + 醇</span>`
+    ],
+    polymer: [
+      `<span>聚合度 n</span><span>=</span><span>${fraction("高分子莫耳質量", "重複單元莫耳質量")}</span>`,
+      `<span>C=C</span><span>→</span><span>-C-C- 重複單元</span>`,
+      `<span>交聯程度 ↑</span><span>→</span><span>鏈段活動度 ↓</span>`
+    ],
+    experiment: [
+      `<span>斜率</span><span>=</span><span>${fraction("Δy", "Δx")}</span>`,
+      `<span>百分誤差</span><span>=</span><span>${fraction("|實驗值 - 理論值|", "理論值")} × 100%</span>`,
+      `<span>控制變因</span><span>:</span><span>一次主要改變一個變因</span>`
+    ]
+  };
+  return byTopic[question.topicKey] || [`<span>${escapeHtml(question.calculation)}</span>`];
+}
+
 function stepsFor(number, topic, concept, calculation) {
   if (number === 26) return ["從題目反應證據判斷未知片段含有可被銀鏡試劑氧化的醛基。", "將未知取代基 R 與母體結構比對，找出可提供醛基反應性的片段。", "以 -CHO 表示 R，並檢查連接位置是否清楚。", "確認答案同時符合分子式、反應現象與官能基性質。"];
   if (number === 27) return ["辨認題目中的反應屬於有機水解或官能基轉換。", "追蹤芳香環與羧基片段，判斷水解後形成的酸性產物。", "將產物與防腐劑情境連結，確認丁為苯甲酸。", "答案需寫出名稱；若用結構式作答，需清楚呈現苯環連接羧基。"];
   return [
     `回到原試題第 ${number} 題，圈出已知量、限制條件與要求目標。`,
     `辨認本題落在「${topic}」中的「${concept}」，避免只憑關鍵字猜答。`,
-    `列出可用關係式：${calculation}`,
+    "列出可用關係式，並依上方方程式區的符號、單位與係數進行代入。",
     "將題目給定的數值或敘述轉換成化學表徵，例如反應式、平衡式、能量圖、濃度關係或官能基結構。",
     `依據核心概念逐一檢查選項或計算步驟，排除與「${concept}」矛盾的敘述。`,
     `用答案 ${ANSWERS[`q${number}`]} 回頭核對題幹條件，確認沒有忽略單位、係數、方向或例外。`

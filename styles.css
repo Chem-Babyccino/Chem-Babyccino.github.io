@@ -431,6 +431,56 @@ main {
   background: #fff;
 }
 
+.formula-box {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.formula-line {
+  display: grid;
+  grid-template-columns: minmax(120px, auto) auto minmax(160px, 1fr);
+  align-items: center;
+  gap: 14px;
+  width: min(760px, 100%);
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfaf2;
+  color: var(--ink);
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1.35;
+}
+
+.formula-line .arrow,
+.formula-line > span:nth-child(2) {
+  color: var(--leaf-dark);
+  font-weight: 900;
+  text-align: center;
+}
+
+.fraction {
+  display: inline-grid;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.fraction span:first-child {
+  padding: 0 6px 3px;
+  border-bottom: 2px solid currentColor;
+}
+
+.fraction span:last-child {
+  padding: 3px 6px 0;
+}
+
+.formula-note {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+}
+
 .concept-box ul,
 .answer-box ol {
   margin-bottom: 0;
