@@ -608,7 +608,6 @@ function formulaHtml(question) {
   return `
     <div class="formula-box" aria-label="計算式或判斷式">
       ${lines.map((line) => `<div class="formula-line">${line}</div>`).join("")}
-      <p class="formula-note">${escapeHtml(question.calculation)}</p>
     </div>
   `;
 }

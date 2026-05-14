@@ -433,16 +433,17 @@ main {
 
 .formula-box {
   display: grid;
-  gap: 12px;
+  justify-items: start;
+  gap: 14px;
   margin-top: 12px;
 }
 
 .formula-line {
   display: grid;
-  grid-template-columns: minmax(120px, auto) auto minmax(160px, 1fr);
+  grid-template-columns: minmax(150px, auto) minmax(32px, auto) minmax(180px, 1fr);
   align-items: center;
   gap: 14px;
-  width: min(760px, 100%);
+  width: min(860px, 100%);
   padding: 12px 14px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -464,21 +465,19 @@ main {
   vertical-align: middle;
   text-align: center;
   line-height: 1.15;
+  min-width: 92px;
+  font-size: 0.95em;
 }
 
 .fraction span:first-child {
-  padding: 0 6px 3px;
+  display: block;
+  padding: 0 8px 5px;
   border-bottom: 2px solid currentColor;
 }
 
 .fraction span:last-child {
-  padding: 3px 6px 0;
-}
-
-.formula-note {
-  margin: 4px 0 0;
-  color: var(--muted);
-  font-size: 17px;
+  display: block;
+  padding: 5px 8px 0;
 }
 
 .concept-box ul,
