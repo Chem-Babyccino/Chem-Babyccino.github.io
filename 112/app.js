@@ -597,13 +597,13 @@ function pdfViewerHtml(question) {
   return `
     <div class="question-pdf-viewer">
       <div class="question-pdf-toolbar">
-        <span>112 年化學分科測驗試題 PDF｜定位至第 ${question.pdfPage} 頁</span>
+        <span>112 年化學分科測驗試題 PDF｜另開 PDF 可定位至第 ${question.pdfPage} 頁</span>
         <div class="question-pdf-actions">
           <a class="mini-button" href="${url}" target="_blank" rel="noreferrer">另開 PDF</a>
           <a class="mini-button" href="./assets/112-chemistry-exam.pdf" target="_blank" rel="noreferrer">完整試卷</a>
         </div>
       </div>
-      <div class="question-pdf-scroll"><iframe src="${url}" title="112 年化學分科測驗第 ${question.number} 題"></iframe></div>
+      <div class="question-pdf-scroll"><iframe src="${QUESTION_PDF}" title="112 年化學分科測驗第 ${question.number} 題"></iframe></div>
     </div>
   `;
 }
