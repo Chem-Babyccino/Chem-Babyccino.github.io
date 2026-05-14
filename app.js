@@ -1,5 +1,5 @@
-const QUESTION_PDF = "./assets/113-chemistry-exam.pdf";
-const LOCAL_STORAGE_KEY = "chem113.learning.progress.v2";
+﻿const QUESTION_PDF = "https://go100.com.tw/file/exam/S112-AST/112AST_Chemistry.pdf";
+const LOCAL_STORAGE_KEY = "chem112.learning.progress.v1";
 
 const PAGE_LABELS = {
   single: "單一選題",
@@ -8,11 +8,37 @@ const PAGE_LABELS = {
 };
 
 const ANSWERS = {
-  q1: "A", q2: "E", q3: "A", q4: "C", q5: "B", q6: "E", q7: "B",
-  q8: "A、B、C", q9: "A、C、E", q10: "A、B、D", q11: "A、C、E", q12: "A、B、E", q13: "A、B、E",
-  q14: "A、B、D", q15: "A、B、E", q16: "A、B、E", q17: "B、D、E", q18: "A、B、D", q19: "B、C、E",
-  q20: "見非選評分原則", q21: "見非選評分原則", q22: "D、E", q23: "B、E",
-  q24: "見非選評分原則", q25: "見非選評分原則", q26: "R = -CHO", q27: "丁為苯甲酸"
+  q1: "D",
+  q2: "B",
+  q3: "C",
+  q4: "C",
+  q5: "A",
+  q6: "A",
+  q7: "E",
+  q8: "A、C、E",
+  q9: "A、B、E",
+  q10: "A、C",
+  q11: "C、E",
+  q12: "B、C、D",
+  q13: "B、D、E",
+  q14: "A、B、E",
+  q15: "B、D",
+  q16: "A、D",
+  q17: "B、E",
+  q18: "C、D",
+  q19: "B、C、E",
+  q20: "A、D",
+  q21: "C",
+  q22: "見非選評分原則",
+  q23: "見非選評分原則",
+  q24: "見非選評分原則",
+  q25: "見非選評分原則",
+  q26: "見非選評分原則",
+  q27: "見非選評分原則",
+  q28: "見非選評分原則",
+  q29: "見非選評分原則",
+  q30: "見非選評分原則",
+  q31: "見非選評分原則"
 };
 
 const TOPIC_LIBRARY = {
@@ -239,33 +265,37 @@ const TOPIC_LIBRARY = {
 };
 
 const QUESTION_SEEDS = [
-  [1, "atom", "游離能與週期趨勢", 2, "single", "rank"],
-  [2, "bonding", "分子形狀、極性與鍵角", 2, "single", ""],
-  [3, "stoich", "配平、限制試劑與莫耳比", 2, "single", ""],
-  [4, "acid", "pH、指示劑與中和", 3, "single", "titration"],
-  [5, "redox", "氧化數、半反應與電子守恆", 3, "single", "redox"],
-  [6, "equilibrium", "反應商、平衡常數與移動方向", 3, "single", "equilibrium"],
-  [7, "thermo", "焓變、能量圖與反應熱", 3, "single", "energy"],
-  [8, "rate", "活化能、催化劑與碰撞理論", 4, "multiple", "energy"],
-  [9, "gas", "分壓、理想氣體與莫耳分率", 4, "multiple", "gas"],
-  [10, "solution", "稀釋、混合與濃度換算", 4, "multiple", ""],
-  [11, "ksp", "Ksp、共同離子與沉澱判斷", 5, "multiple", "precipitation"],
-  [12, "organic", "官能基辨識與異構物", 5, "multiple", "organic"],
-  [13, "polymer", "聚合反應與結構性質", 5, "multiple", ""],
-  [14, "bonding", "晶體、鍵結與物質性質", 6, "multiple", ""],
-  [15, "acid", "緩衝溶液與滴定曲線", 7, "multiple", "titration"],
-  [16, "redox", "原電池、電解與電位", 7, "multiple", "redox"],
-  [17, "equilibrium", "K值、濃度變化與圖形判讀", 8, "multiple", "equilibrium"],
-  [18, "experiment", "變因控制、誤差與資料判讀", 8, "multiple", "experiment"],
-  [19, "experiment", "定性分析、光譜與證據推論", 8, "multiple", ""],
-  [20, "stoich", "反應式、氣體生成與計算過程", 9, "written", "gas"],
-  [21, "experiment", "圖表、比較推論與有效數字", 9, "written", "experiment"],
-  [22, "organic", "官能基轉換與反應判斷", 10, "multiple", "organic"],
-  [23, "redox", "氧化還原、污染物與水質", 11, "multiple", "redox"],
-  [24, "experiment", "萃取、分層與操作推理", 11, "written", "separation"],
-  [25, "equilibrium", "圖表模型與文字解釋", 12, "written", "equilibrium"],
-  [26, "organic", "銀鏡反應、官能基與結構式", 12, "written", "organic"],
-  [27, "organic", "水解反應、羧酸與防腐劑", 12, "written", "organic"]
+  [1, "acid", "共軛酸鹼對與質子轉移", 2, "single", "titration"],
+  [2, "atom", "碳原子的連續游離能與電子組態", 2, "single", "rank"],
+  [3, "atom", "週期性變化與原子性質圖形判讀", 2, "single", "rank"],
+  [4, "polymer", "多醣聚合、滲透壓與分子量", 2, "single", ""],
+  [5, "stoich", "鐵氧化物還原、沉澱量與莫耳比", 3, "single", "precipitation"],
+  [6, "bonding", "主客化學中的分子間作用力", 3, "single", "organic"],
+  [7, "equilibrium", "錯合物形成平衡常數與濃度估算", 3, "single", "equilibrium"],
+  [8, "organic", "阿司匹靈合成、酯化與實驗操作", 4, "multiple", "organic"],
+  [9, "thermo", "Born-Haber 循環與反應焓判斷", 4, "multiple", "energy"],
+  [10, "acid", "弱鹼滴定曲線與酸鹼濃度變化", 5, "multiple", "titration"],
+  [11, "organic", "直鏈醇、烷、醛、羧酸的物性與反應", 6, "multiple", "organic"],
+  [12, "organic", "有機化合物沸點、溶解度與氧化反應", 6, "multiple", "organic"],
+  [13, "solution", "溶液濃度、稀釋與混合後離子濃度", 6, "multiple", ""],
+  [14, "experiment", "定性分析、物質鑑別與證據推論", 6, "multiple", "experiment"],
+  [15, "ksp", "溶度積、共同離子與沉澱判斷", 7, "multiple", "precipitation"],
+  [16, "redox", "電化學、氧化還原與電極判斷", 7, "multiple", "redox"],
+  [17, "rate", "反應速率資料、圖形與速率式判讀", 8, "multiple", "experiment"],
+  [18, "gas", "氣體壓力、理想氣體與反應計量", 8, "multiple", "gas"],
+  [19, "experiment", "實驗設計、控制變因與資料判讀", 8, "multiple", "experiment"],
+  [20, "redox", "水電解裝置、電極反應與產物判斷", 9, "multiple", "redox"],
+  [21, "experiment", "電解實驗條件與電極材料判斷", 9, "multiple", "experiment"],
+  [22, "redox", "水電解反應式平衡", 9, "written", "redox"],
+  [23, "stoich", "水電解氣體體積與莫耳比推論", 10, "written", "gas"],
+  [24, "experiment", "電解產物觀察與檢驗方法", 10, "written", "experiment"],
+  [25, "redox", "電解反應中的電子轉移與半反應", 10, "written", "redox"],
+  [26, "solution", "濃度、溶液配製與計算式書寫", 11, "written", ""],
+  [27, "acid", "酸鹼中和或滴定資料的計算推論", 11, "written", "titration"],
+  [28, "experiment", "資料處理、有效數字與誤差說明", 11, "written", "experiment"],
+  [29, "organic", "有機官能基辨識與反應結果推論", 12, "written", "organic"],
+  [30, "organic", "結構式、分子式與官能基轉換", 12, "written", "organic"],
+  [31, "experiment", "化學實驗結論的文字表達與證據連結", 12, "written", "experiment"]
 ];
 
 const QUESTIONS = QUESTION_SEEDS.map(([number, topicKey, concept, pdfPage, page, simulation]) => {
@@ -300,7 +330,7 @@ const QUESTIONS = QUESTION_SEEDS.map(([number, topicKey, concept, pdfPage, page,
 
 const state = {
   route: "home",
-  activeQuestionByPage: { single: "q1", multiple: "q8", written: "q20" },
+  activeQuestionByPage: { single: "q1", multiple: "q8", written: "q22" },
   progress: readJson(LOCAL_STORAGE_KEY, {}),
   selectedRole: "student",
   paused: false
@@ -333,10 +363,10 @@ function renderHome() {
     <div class="home-grid">
       <section class="intro-panel">
         <p class="eyebrow">Chemistry Learning Studio</p>
-        <h2>113年化學分科測驗試題學習網頁</h2>
+        <h2>112年化學分科測驗試題學習網頁</h2>
         <p>這個網頁依照 114 年學習站的架構重整，將原試題閱讀、題號小卡、逐題解析、模擬動畫與最後檢核放在同一個學習工作區。</p>
         <div class="feature-list">
-          <div><strong>試題定位</strong><span>每題內嵌 113 年化學分科測驗 PDF，並以頁碼定位到該題所在頁面。</span></div>
+          <div><strong>試題定位</strong><span>每題內嵌 112 年化學分科測驗 PDF，並以頁碼定位到該題所在頁面。</span></div>
           <div><strong>逐題解析</strong><span>每題提供答案、核心概念、詳細解題步驟；若需要計算，會列出公式、代入邏輯與單位提醒。</span></div>
           <div><strong>診斷式檢核</strong><span>頁面最後提供兩題核心概念診斷題，以及一題原試題類題，作答後會顯示詳解。</span></div>
           <div><strong>類題練習</strong><span>每題最後提供同概念的類題練習，協助學生確認能否遷移應用。</span></div>
@@ -515,14 +545,15 @@ function embeddedLearningFrame(question, kind, index, title) {
       : kind === "diagnostic"
         ? `diagnostic/q${number}_d${index}.html`
         : `similar/q${number}_s${index}.html`;
-  const src = `assets/113_ast_chem_embed/${file}`;
+  const src = `assets/112_ast_chem_embed/${file}`;
   const embeddedHtml = window.EMBEDDED_LEARNING_HTML?.[file] || "";
   const iframeSource = embeddedHtml ? `srcdoc="${escapeHtml(embeddedHtml)}"` : `src="${src}"`;
+  const openHref = embeddedHtml ? `data:text/html;charset=utf-8,${encodeURIComponent(embeddedHtml)}` : src;
   return `
     <article class="embedded-card">
       <div class="embedded-card-header">
         <h3>${escapeHtml(title)}</h3>
-        <a class="secondary-button small-button" href="${src}" target="_blank" rel="noopener">另開</a>
+        <a class="secondary-button small-button" href="${openHref}" target="_blank" rel="noopener">另開</a>
       </div>
       <iframe class="learning-embed" title="第 ${question.number} 題 ${escapeHtml(title)}" ${iframeSource} loading="lazy"></iframe>
     </article>
@@ -566,13 +597,13 @@ function pdfViewerHtml(question) {
   return `
     <div class="question-pdf-viewer">
       <div class="question-pdf-toolbar">
-        <span>113 年化學分科測驗試題 PDF｜定位至第 ${question.pdfPage} 頁</span>
+        <span>112 年化學分科測驗試題 PDF｜定位至第 ${question.pdfPage} 頁</span>
         <div class="question-pdf-actions">
           <a class="mini-button" href="${url}" target="_blank" rel="noreferrer">另開 PDF</a>
-          <a class="mini-button" href="./assets/113-chemistry-exam.pdf" target="_blank" rel="noreferrer">完整試卷</a>
+          <a class="mini-button" href="https://go100.com.tw/file/exam/S112-AST/112AST_Chemistry.pdf" target="_blank" rel="noreferrer">完整試卷</a>
         </div>
       </div>
-      <div class="question-pdf-scroll"><iframe src="${url}" title="113 年化學分科測驗第 ${question.number} 題"></iframe></div>
+      <div class="question-pdf-scroll"><iframe src="${url}" title="112 年化學分科測驗第 ${question.number} 題"></iframe></div>
     </div>
   `;
 }
@@ -769,3 +800,4 @@ function writeJson(key, value) {
 function escapeHtml(value) {
   return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
 }
+
