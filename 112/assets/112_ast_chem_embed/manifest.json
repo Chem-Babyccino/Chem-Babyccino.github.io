@@ -1,0 +1,219 @@
+[
+  {
+    "number": 1,
+    "topic": "acid",
+    "concept": "共軛酸鹼對與質子轉移",
+    "answer": "D",
+    "page": "single"
+  },
+  {
+    "number": 2,
+    "topic": "atom",
+    "concept": "碳原子的連續游離能與電子組態",
+    "answer": "B",
+    "page": "single"
+  },
+  {
+    "number": 3,
+    "topic": "atom",
+    "concept": "週期性變化與原子性質圖形判讀",
+    "answer": "C",
+    "page": "single"
+  },
+  {
+    "number": 4,
+    "topic": "polymer",
+    "concept": "多醣聚合、滲透壓與分子量",
+    "answer": "C",
+    "page": "single"
+  },
+  {
+    "number": 5,
+    "topic": "stoich",
+    "concept": "鐵氧化物還原、沉澱量與莫耳比",
+    "answer": "A",
+    "page": "single"
+  },
+  {
+    "number": 6,
+    "topic": "bonding",
+    "concept": "主客化學中的分子間作用力",
+    "answer": "A",
+    "page": "single"
+  },
+  {
+    "number": 7,
+    "topic": "equilibrium",
+    "concept": "錯合物形成平衡常數與濃度估算",
+    "answer": "E",
+    "page": "single"
+  },
+  {
+    "number": 8,
+    "topic": "organic",
+    "concept": "阿司匹靈合成、酯化與實驗操作",
+    "answer": "A、C、E",
+    "page": "multiple"
+  },
+  {
+    "number": 9,
+    "topic": "thermo",
+    "concept": "Born-Haber 循環與反應焓判斷",
+    "answer": "A、B、E",
+    "page": "multiple"
+  },
+  {
+    "number": 10,
+    "topic": "acid",
+    "concept": "弱鹼滴定曲線與酸鹼濃度變化",
+    "answer": "A、C",
+    "page": "multiple"
+  },
+  {
+    "number": 11,
+    "topic": "organic",
+    "concept": "直鏈醇、烷、醛、羧酸的物性與反應",
+    "answer": "C、E",
+    "page": "multiple"
+  },
+  {
+    "number": 12,
+    "topic": "organic",
+    "concept": "有機化合物沸點、溶解度與氧化反應",
+    "answer": "B、C、D",
+    "page": "multiple"
+  },
+  {
+    "number": 13,
+    "topic": "solution",
+    "concept": "溶液濃度、稀釋與混合後離子濃度",
+    "answer": "B、D、E",
+    "page": "multiple"
+  },
+  {
+    "number": 14,
+    "topic": "experiment",
+    "concept": "定性分析、物質鑑別與證據推論",
+    "answer": "A、B、E",
+    "page": "multiple"
+  },
+  {
+    "number": 15,
+    "topic": "ksp",
+    "concept": "溶度積、共同離子與沉澱判斷",
+    "answer": "B、D",
+    "page": "multiple"
+  },
+  {
+    "number": 16,
+    "topic": "redox",
+    "concept": "電化學、氧化還原與電極判斷",
+    "answer": "A、D",
+    "page": "multiple"
+  },
+  {
+    "number": 17,
+    "topic": "rate",
+    "concept": "反應速率資料、圖形與速率式判讀",
+    "answer": "B、E",
+    "page": "multiple"
+  },
+  {
+    "number": 18,
+    "topic": "gas",
+    "concept": "氣體壓力、理想氣體與反應計量",
+    "answer": "C、D",
+    "page": "multiple"
+  },
+  {
+    "number": 19,
+    "topic": "experiment",
+    "concept": "實驗設計、控制變因與資料判讀",
+    "answer": "B、C、E",
+    "page": "multiple"
+  },
+  {
+    "number": 20,
+    "topic": "redox",
+    "concept": "水電解裝置、電極反應與產物判斷",
+    "answer": "A、D",
+    "page": "multiple"
+  },
+  {
+    "number": 21,
+    "topic": "experiment",
+    "concept": "電解實驗條件與電極材料判斷",
+    "answer": "C",
+    "page": "multiple"
+  },
+  {
+    "number": 22,
+    "topic": "redox",
+    "concept": "水電解反應式平衡",
+    "answer": "見非選評分原則",
+    "page": "written"
+  },
+  {
+    "number": 23,
+    "topic": "stoich",
+    "concept": "水電解氣體體積與莫耳比推論",
+    "answer": "見非選評分原則",
+    "page": "written"
+  },
+  {
+    "number": 24,
+    "topic": "experiment",
+    "concept": "電解產物觀察與檢驗方法",
+    "answer": "見非選評分原則",
+    "page": "written"
+  },
+  {
+    "number": 25,
+    "topic": "redox",
+    "concept": "電解反應中的電子轉移與半反應",
+    "answer": "見非選評分原則",
+    "page": "written"
+  },
+  {
+    "number": 26,
+    "topic": "solution",
+    "concept": "濃度、溶液配製與計算式書寫",
+    "answer": "見非選評分原則",
+    "page": "written"
+  },
+  {
+    "number": 27,
+    "topic": "acid",
+    "concept": "酸鹼中和或滴定資料的計算推論",
+    "answer": "見非選評分原則",
+    "page": "written"
+  },
+  {
+    "number": 28,
+    "topic": "experiment",
+    "concept": "資料處理、有效數字與誤差說明",
+    "answer": "見非選評分原則",
+    "page": "written"
+  },
+  {
+    "number": 29,
+    "topic": "organic",
+    "concept": "有機官能基辨識與反應結果推論",
+    "answer": "見非選評分原則",
+    "page": "written"
+  },
+  {
+    "number": 30,
+    "topic": "organic",
+    "concept": "結構式、分子式與官能基轉換",
+    "answer": "見非選評分原則",
+    "page": "written"
+  },
+  {
+    "number": 31,
+    "topic": "experiment",
+    "concept": "化學實驗結論的文字表達與證據連結",
+    "answer": "見非選評分原則",
+    "page": "written"
+  }
+]

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#edf5ec" />
+    <title>112年化學分科測驗試題學習網頁</title>
+    <meta name="description" content="112年化學分科測驗試題學習網頁：試題定位、逐題解析、模擬動畫與檢核。" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="site-header">
+        <div class="brand-block">
+          <p class="eyebrow">Nature Chemistry Studio</p>
+          <h1>112年化學分科測驗試題學習網頁</h1>
+        </div>
+        <div class="user-strip">
+          <span id="syncStatus" class="status-pill ok">本機預覽模式</span>
+          <span id="profilePill" class="profile-pill">112學習平台</span>
+        </div>
+      </header>
+
+      <nav id="mainNav" class="main-nav" aria-label="主要分頁">
+        <button type="button" data-route="home" class="active">首頁</button>
+        <button type="button" data-route="single">單一選題</button>
+        <button type="button" data-route="multiple">多重選擇題</button>
+        <button type="button" data-route="written">非選擇題</button>
+      </nav>
+
+      <main>
+        <section id="homeView" class="view"></section>
+        <section id="singleView" class="view hidden"></section>
+        <section id="multipleView" class="view hidden"></section>
+        <section id="writtenView" class="view hidden"></section>
+      </main>
+    </div>
+
+    <script src="./embed-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
