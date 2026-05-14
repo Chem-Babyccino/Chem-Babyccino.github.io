@@ -336,12 +336,12 @@ function renderHome() {
       <section class="intro-panel">
         <p class="eyebrow">Chemistry Learning Studio</p>
         <h2>113年化學分科測驗試題學習網頁</h2>
-        <p>這個網頁依照 114 年學習站的架構重整，將原試題閱讀、題號小卡、逐題解析、評量規準、模擬動畫與最後檢核放在同一個學習工作區。</p>
+        <p>這個網頁依照 114 年學習站的架構重整，將原試題閱讀、題號小卡、逐題解析、模擬動畫與最後檢核放在同一個學習工作區。</p>
         <div class="feature-list">
           <div><strong>試題定位</strong><span>每題內嵌 113 年化學分科測驗 PDF，並以頁碼定位到該題所在頁面。</span></div>
           <div><strong>逐題解析</strong><span>每題提供答案、核心概念、詳細解題步驟；若需要計算，會列出公式、代入邏輯與單位提醒。</span></div>
           <div><strong>診斷式檢核</strong><span>頁面最後提供兩題核心概念診斷題，以及一題原試題類題，作答後會顯示詳解。</span></div>
-          <div><strong>評量規準</strong><span>每題列出等第規準與參考答案示例，幫助學生知道如何把推理寫完整。</span></div>
+          <div><strong>類題練習</strong><span>每題最後提供同概念的類題練習，協助學生確認能否遷移應用。</span></div>
         </div>
       </section>
       <section class="login-panel">
@@ -481,8 +481,6 @@ function questionWorkspaceHtml(question) {
       </div>
     </section>
 
-    <section class="content-section"><h4>評量規準</h4><div class="rubric-list">${question.rubric.map(([level, text]) => `<div class="rubric-item"><strong>${escapeHtml(level)}</strong>${escapeHtml(text)}</div>`).join("")}</div></section>
-    <section class="content-section"><h4>各等第參考答案示例</h4><div class="sample-grid">${question.samples.map(([level, text]) => `<div class="sample-item"><strong>${escapeHtml(level)}</strong>${escapeHtml(text)}</div>`).join("")}</div></section>
     ${question.simulation ? simulationHtml(question) : ""}
     <section class="content-section">
       <h4>最後檢核</h4>
