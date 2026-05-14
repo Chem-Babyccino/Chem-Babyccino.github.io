@@ -289,8 +289,14 @@ const QUESTIONS = QUESTION_SEEDS.map(([number, topicKey, concept, pdfPage, page,
     steps: stepsFor(number, topic.name, concept, topic.calculation),
     rubric: rubricFor(page, number, topic.name),
     samples: samplesFor(page, number, topic.name),
-    diagnostics: topic.diagnostics,
-    transfer: topic.transfer
+    diagnostics: topic.diagnostics.map((diagnostic) => ({
+      ...diagnostic,
+      prompt: `第 ${number} 題概念「${concept}」診斷：${diagnostic.prompt}`
+    })),
+    transfer: {
+      ...topic.transfer,
+      prompt: `第 ${number} 題類題（${concept}）：${topic.transfer.prompt.replace(/^類題：/, "")}`
+    }
   };
 });
 
