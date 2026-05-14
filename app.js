@@ -464,13 +464,10 @@ function questionWorkspaceHtml(question) {
     </section>
 
     <section class="content-section">
-      <h4>答案、核心概念與詳細解題步驟</h4>
+      <h4>詳解、核心概念與解題步驟</h4>
       <div class="answer-layout">
         <div class="answer-main">
-          <div class="answer-box"><strong>解答</strong><p>${escapeHtml(answerText(question))}</p></div>
-          <div class="concept-box"><strong>測驗到的核心概念內容</strong><ul>${question.concepts.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>
-          <div class="answer-box"><strong>計算式或判斷式</strong>${formulaHtml(question)}</div>
-          <div class="answer-box"><strong>詳細解題步驟</strong><ol>${question.steps.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol></div>
+          ${embeddedLearningFrame(question, "original", 1, "本題詳解")}
         </div>
         <aside class="answer-side">
           <div class="choice-box">
@@ -489,7 +486,7 @@ function questionWorkspaceHtml(question) {
     ${question.simulation ? simulationHtml(question) : ""}
     <section class="content-section">
       <h4>最後檢核</h4>
-      <div class="check-grid">
+      <div class="embedded-check-grid">
         ${diagnosticCardHtml(question, 0, progress)}
         ${diagnosticCardHtml(question, 1, progress)}
         ${transferCardHtml(question, progress)}
@@ -499,25 +496,37 @@ function questionWorkspaceHtml(question) {
 }
 
 function diagnosticCardHtml(question, index, progress) {
-  const quiz = question.diagnostics[index];
-  const key = `diag${index + 1}`;
-  return `
-    <article class="check-card">
-      <h3>核心概念診斷 ${index + 1}</h3>
-      <p>${escapeHtml(quiz.prompt)}</p>
-      <div class="option-list" data-check="${key}">${optionButtons(quiz)}</div>
-      <p class="feedback" data-feedback="${key}">${progress[key] ? `已通過。詳解：${escapeHtml(quiz.explanation)}` : ""}</p>
-    </article>
-  `;
+  return embeddedLearningFrame(question, "diagnostic", index + 1, `核心概念診斷 ${index + 1}`);
 }
 
 function transferCardHtml(question, progress) {
   return `
-    <article class="check-card transfer-card">
+    <article class="embedded-card transfer-card">
       <h3>類題練習</h3>
-      <p>${escapeHtml(question.transfer.prompt)}</p>
-      <div class="option-list" data-check="transfer">${optionButtons(question.transfer)}</div>
-      <p class="feedback" data-feedback="transfer">${progress.transfer ? `已完成。詳解：${escapeHtml(question.transfer.explanation)}` : ""}</p>
+      <div class="embedded-stack">
+        ${embeddedLearningFrame(question, "similar", 1, "類題 1")}
+        ${embeddedLearningFrame(question, "similar", 2, "類題 2")}
+      </div>
+    </article>
+  `;
+}
+
+function embeddedLearningFrame(question, kind, index, title) {
+  const number = String(question.number).padStart(2, "0");
+  const file =
+    kind === "original"
+      ? `original/q${number}.html`
+      : kind === "diagnostic"
+        ? `diagnostic/q${number}_d${index}.html`
+        : `similar/q${number}_s${index}.html`;
+  const src = `assets/113_ast_chem_embed/${file}`;
+  return `
+    <article class="embedded-card">
+      <div class="embedded-card-header">
+        <h3>${escapeHtml(title)}</h3>
+        <a class="secondary-button small-button" href="${src}" target="_blank" rel="noopener">另開</a>
+      </div>
+      <iframe class="learning-embed" title="第 ${question.number} 題 ${escapeHtml(title)}" src="${src}" loading="lazy"></iframe>
     </article>
   `;
 }
