@@ -287,8 +287,6 @@ const QUESTIONS = QUESTION_SEEDS.map(([number, topicKey, concept, pdfPage, page,
     calculation: topic.calculation,
     explanation: explanationFor(number, topic.name, concept),
     steps: stepsFor(number, topic.name, concept, topic.calculation),
-    rubric: rubricFor(page, number, topic.name),
-    samples: samplesFor(page, number, topic.name),
     diagnostics: topic.diagnostics.map((diagnostic) => ({
       ...diagnostic,
       prompt: `第 ${number} 題概念「${concept}」診斷：${diagnostic.prompt}`
@@ -713,18 +711,6 @@ function stepsFor(number, topic, concept, calculation) {
     `依據核心概念逐一檢查選項或計算步驟，排除與「${concept}」矛盾的敘述。`,
     `用答案 ${ANSWERS[`q${number}`]} 回頭核對題幹條件，確認沒有忽略單位、係數、方向或例外。`
   ];
-}
-
-function rubricFor(page, number, topic) {
-  if (page === "written") return [["A 等第", "答案正確，且完整呈現反應式或結構、推理依據、單位與結論。"], ["B 等第", "答案方向正確，主要推理可辨識，但少部分符號、單位或說明不完整。"], ["C 等第", "能抓到部分概念或列出相關式子，但推論跳躍，無法完整支持結論。"], ["D 等第", "只寫零碎關鍵字或最後答案，缺乏化學依據，或有明顯概念混淆。"]];
-  return [["精熟", `能正確選出 ${ANSWERS[`q${number}`]}，並說明每個正確與錯誤選項和「${topic}」概念的關係。`], ["基礎", "能選出正確答案，且能說明主要依據，但對部分干擾選項的排除理由不完整。"], ["待加強", "能辨認題目大致主題，但常以記憶片段或單一關鍵字作答。"], ["未達", "無法連結題幹資訊與核心概念，答案主要仰賴猜測。"]];
-}
-
-function samplesFor(page, number, topic) {
-  if (number === 26) return [["A 等第示例", "R 為 -CHO，因反應證據顯示未知片段具有醛基，可與銀鏡試劑反應，且符合題目結構關係。"], ["B 等第示例", "R 是醛基，可寫成 -CHO，但未完整說明和反應證據的連結。"], ["C 等第示例", "寫出和含氧官能基有關，但把醛基與羧酸或醇混淆。"], ["D 等第示例", "只寫 R 有氧，沒有結構式也沒有推理。"]];
-  if (number === 27) return [["A 等第示例", "丁為苯甲酸；水解後形成含苯環的羧酸，和題目所述防腐劑情境相符。"], ["B 等第示例", "寫出苯甲酸，但只簡略說是水解產物。"], ["C 等第示例", "指出產物是酸類，但沒有辨認為苯甲酸。"], ["D 等第示例", "只寫有機酸或防腐劑，未能指出產物。"]];
-  if (page === "written") return [["A 等第示例", `先列出題目給定資料，再用 ${topic} 的原理建立關係式，計算或推論後寫出完整結論。`], ["B 等第示例", "能寫出主要式子與答案，但少一段文字說明或單位標示。"], ["C 等第示例", "有列式或概念關鍵字，但步驟不足，答案可信度不高。"], ["D 等第示例", "只寫最後結果，沒有可評分的推理過程。"]];
-  return [["精熟示例", `答案為 ${ANSWERS[`q${number}`]}。我先依 ${topic} 核心概念判斷題幹條件，再逐項檢查選項是否符合。`], ["基礎示例", `答案為 ${ANSWERS[`q${number}`]}，理由和 ${topic} 有關，但只說明了主要選項。`], ["待加強示例", `我猜答案是 ${ANSWERS[`q${number}`]}，但只能指出題目和 ${topic} 有關。`], ["未達示例", "沒有回扣題幹條件，或以和題目無關的概念說明。"]];
 }
 
 function explanationFor(number, topic, concept) {
