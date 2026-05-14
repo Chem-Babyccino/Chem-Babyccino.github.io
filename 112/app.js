@@ -1,4 +1,4 @@
-﻿const QUESTION_PDF = "https://go100.com.tw/file/exam/S112-AST/112AST_Chemistry.pdf";
+﻿const QUESTION_PDF = "./assets/112-chemistry-exam.pdf";
 const LOCAL_STORAGE_KEY = "chem112.learning.progress.v1";
 
 const PAGE_LABELS = {
@@ -600,7 +600,7 @@ function pdfViewerHtml(question) {
         <span>112 年化學分科測驗試題 PDF｜定位至第 ${question.pdfPage} 頁</span>
         <div class="question-pdf-actions">
           <a class="mini-button" href="${url}" target="_blank" rel="noreferrer">另開 PDF</a>
-          <a class="mini-button" href="https://go100.com.tw/file/exam/S112-AST/112AST_Chemistry.pdf" target="_blank" rel="noreferrer">完整試卷</a>
+          <a class="mini-button" href="./assets/112-chemistry-exam.pdf" target="_blank" rel="noreferrer">完整試卷</a>
         </div>
       </div>
       <div class="question-pdf-scroll"><iframe src="${url}" title="112 年化學分科測驗第 ${question.number} 題"></iframe></div>
@@ -800,4 +800,5 @@ function writeJson(key, value) {
 function escapeHtml(value) {
   return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
 }
+
 
