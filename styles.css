@@ -685,3 +685,53 @@ code {
     font-size: 23px;
   }
 }
+
+.role-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.role-tab {
+  min-height: 54px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #edf5ec;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.role-tab.active {
+  color: #fff;
+  background: var(--leaf-dark);
+  border-color: var(--leaf-dark);
+}
+
+.login-form {
+  display: grid;
+  gap: 14px;
+}
+
+.login-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.login-form input,
+.login-form textarea {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 13px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.transfer-card {
+  grid-column: 1 / -1;
+}
